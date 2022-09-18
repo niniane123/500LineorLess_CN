@@ -78,7 +78,9 @@ class OCRNeuralNetwork:
         for data in training_data_array:
             # Step 2: Forward propagation          Returns the transpose of the matrix.
             # data其实是一个具名的元组，可以通过属性名（类似类成员）来访问其中的任意一个元素。
-            y1 = np.dot(np.mat(self.theta1), np.mat(data['y0']).T)
+
+            # 感觉这边的语法不太对data.y0
+            y1 = np.dot(np.mat(self.theta1), np.mat(data["y0"]).T)
             sum1 = y1 + np.mat(self.input_layer_bias)  # Add the bias
             y1 = self.sigmoid(sum1)
 
