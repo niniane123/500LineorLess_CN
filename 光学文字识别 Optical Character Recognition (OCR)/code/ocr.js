@@ -81,6 +81,7 @@ var ocrDemo = {
     fillSquare: function(ctx, x, y) {
         var xPixel = Math.floor(x / this.PIXEL_WIDTH);
         var yPixel = Math.floor(y / this.PIXEL_WIDTH);
+        //例如一个在第三行第二列的数据你则么计算他的实际位置？这就是相当于吧矩阵拉平到了数组上面；
         this.data[((xPixel - 1)  * this.TRANSLATED_WIDTH + yPixel) - 1] = 1;
 
         ctx.fillStyle = '#ffffff';
@@ -106,6 +107,7 @@ var ocrDemo = {
 
             this.sendData(json);
             this.trainingRequestCount = 0;
+            //清空训练数组
             this.trainArray = [];
         }
     },
@@ -143,8 +145,29 @@ var ocrDemo = {
         xmlHttp.onload = function() { this.receiveResponse(xmlHttp); }.bind(this);
         xmlHttp.onerror = function() { this.onError(xmlHttp) }.bind(this);
         var msg = JSON.stringify(json);
-        xmlHttp.setRequestHeader('Content-length', msg.length);
-        xmlHttp.setRequestHeader("Connection", "close");
+        xmlHttp.setResetRequestHeaderquestHeader('Content-length', msg.length);
+        xmlHttp.("Connection", "close");
         xmlHttp.send(msg);
     }
+
+        /**
+         * 架构组成：
+         *      1.基础的属性配置；即数据源
+         *
+         *      2.重置画布，设置画布的初始状态；操作我们的基础属性配置
+         *
+         *      3.训练数据 （包含：数据的获取、校验、存储、发送到服务端等等一系列的操作）
+         *
+         *
+         *
+         *
+         *
+         *      5.
+         *
+         *
+         *
+         *
+         *
+         */
+
 }
